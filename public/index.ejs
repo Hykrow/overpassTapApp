@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+            crossorigin="" />
+            <script src="/socket.io/socket.io.js"></script>
+
+            <script src="https://kit.fontawesome.com/1ba3213007.js"></script>
+
+            <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+		<style type="text/css">
+			#map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+				height:960px;
+			}
+		</style>
+		<title>Carte</title>
+	</head>
+	<body>
+        <div id="map">
+
+        </div>  
+
+        <div id="tools">
+
+              <div style="position: absolute;z-index: 650; top:5%; left: 97%;transform: scale(3); "  id="createMarker"><i class="fas fa-plus" ></i></div>
+              <div style="position: absolute;z-index: 650; top:5%; left: 93.2%;transform: scale(2.5)"  id="reCenterIt"><i class="fas fa-location-arrow"></i></div>
+              <div style="position: absolute;z-index: 650; top:5%; left: 89.5%;transform: scale(2.5)"id="search">    <i class="fas fa-search"></i></div>
+            
+        </div>
+        <div id="search2"style="display: none;" >
+        <div id="selectors"style="position: absolute;z-index: 650; top:27.8%; left: 41.35%; ">
+            <div id="searchFilters">
+            
+            <div id="fiability">
+                    <p id="fiabilityTxt">Fiability(at least) :</p> <p id="fiabilityAmount"></p>
+
+
+                    <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+                    </div>
+
+                </div>
+            <div id="taste">
+                    <div class="slidecontainer">             
+
+                    <p id="tasteTxt">Taste(at least) :</p> <p id="tasteAmount"></p> 
+
+
+                            <input type="range" min="0" max="5" value="0" class="slider" id="myRange2">
+                    </div>
+
+                </div>
+            </div>
+            <div id="temperature">
+                    <p id="temperatureTxt">Temperature:</p> <p id="temperatureAmount">0</p>
+
+
+                    <div class="slidecontainer">
+                            <input type="range" min="0" max="3" value="0" class="slider" id="myRange3">
+                    </div>
+                    <p id="temperatureNote">undefined temperatures and tastes will appears if you let the default values</p>
+
+                </div>
+
+                <p id="searchBtn">Search!</p>
+
+            </div>
+        <div id="background"style="position: absolute;z-index: 640; top:10%; left: 35%;" >
+                        
+            </div>
+        </div>
+
+        <div id="create"style="display: none;" >
+                <div id="selectors"style="position: absolute;z-index: 650; top:27.8%; left: 41.35%; ">
+                    <div id="createOptions">
+                    
+                    <div id="tasteCrt">
+                            <div class="slidecontainer">             
+        
+                            <p id="tasteTxtCrt">Taste :</p> <p id="tasteAmountCrt"></p> 
+        
+        
+                                    <input type="range" min="0" max="5" value="0" class="slider" id="myRangeCrt">
+                            </div>
+        
+                        </div>
+                    </div>
+                    <div id="temperatureCrt">
+                            <p id="temperatureTxtCrt">Temperature:</p> <p id="temperatureAmountCrt">0</p>
+        
+        
+                            <div class="slidecontainerCrt">
+                                    <input type="range" min="0" max="3" value="0" class="slider" id="myRangeCrt2">
+                            </div>
+                            <p id="temperatureNote">undefined temperatures and tastes will appears if you let the default values</p>
+        
+                        </div>
+                        <div class="pretty p-default p-curve">
+                            <input type="checkbox"id="tapBox"  checked />
+                            <div class="state p-info">
+                                <label>Tap</label>
+                            </div>
+                        </div>
+                        <div class="pretty p-default p-curve">
+                            <input type="checkbox"id="fountainBox" />
+                            <div class="state p-info">
+                                <label>Fountain</label>
+                            </div>
+                        </div>
+ 
+                        <div class="pretty p-default p-curve">
+                            <input type="checkbox" id="toiletBox" />
+                            <div class="state p-info">
+                                <label>Toilet</label>
+                            </div>
+                        </div>
+                        <div class="pretty p-default p-curve">
+                            <input type="checkbox" />
+                            <div class="state p-info">
+                                <label>Is drinkable</label>
+                            </div>
+                        </div>
+                        <p id="createBtn">Create!</p>
+
+                    </div>
+                <div id="background"style="position: absolute;z-index: 640; top:10%; left: 35%;" >
+                                
+                    </div>
+                </div>
+        
+        
+
+  </body>
+  <script type="text/javascript" src="client.js"></script>
+
+</html>

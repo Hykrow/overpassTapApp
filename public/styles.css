@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Asap&display=swap');
+#createMarker:hover {
+    cursor: pointer;
+}
+#reCenterIt:hover {
+    cursor: pointer;
+}
+#search:hover{
+    cursor: pointer;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+
+  #fiability{
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+
+  }
+  #background{
+    margin: 20px auto;
+    left: -25%;
+    top: -70%;
+    padding: 400px 50px;
+    border: 3px solid white;
+    border-radius: 40px;
+    width: 500px;
+    background-color : white;
+    text-align: center;
+    font-family: Asap, sans-serif;
+    transition: all 0.3s ease;
+    text-shadow: 0.1em 0.1em #24272E;
+
+  }
+#fiability{
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+}
+#temperature{
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+
+}
+#taste{
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+}
+#selectors{
+    position: absolute;
+
+    left: -500%;
+
+}
+#searchBtn{
+    margin: 55px 55px;
+
+    color: black;
+    padding: 20px 50px;
+    border: 3px solid gray;
+    border-radius: 40px;
+    text-align: center;
+    font-family: Asap, sans-serif;
+    transition: all 0.3s ease;
+    font-size: 50px;
+
+}
+#temperatureNote{
+    font-size : 9px;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 128px;
+  height: 128px;
+
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 102px;
+  height: 102px;
+  border: 12px solid #8ACDEA;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #8ACDEA transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.off{
+  position:absolute;
+  z-index: 650;
+  top:30%;
+  left: 50%; 
+  opacity: 0;
+  transition: all 1.2s ease;
+
+}
+.on{
+  position: absolute;
+  display: flex;
+  z-index: 650;
+  top:30%;
+  left: 50%; 
+  transition: all 1.2s ease;
+
+}
+.offLoader{
+  position:absolute;
+  top:30%;
+  left: 50%; 
+  display: none;
+  transition: all 1.2s ease;
+
+}
+.onbckgrdLoader{
+  position: absolute;
+  display: flex;
+  z-index: 650;
+  top:0%;
+  left: 0%; 
+  transition: all 1.2s ease;
+  padding: 500px 1000px;
+  border: 3px solid white;
+  width: 500px;
+  background-color : white;
+}
+.offbckgrdLoader{
+  position: absolute;
+  display: flex;
+  z-index: 650;
+  opacity: 0;
+  top:0%;
+  left: 0%; 
+  transition: all 1.2s ease;
+  padding: 500px 1000px;
+  border: 3px solid white;
+  width: 500px;
+  background-color : white;
+}
+.offDbckgrdLoader{
+  position: absolute;
+  display: none;
+  z-index: 650;
+  transition: all 1.2s ease;
+  padding: 0px 00px;
+  border: 3px solid white;
+  width: 0px;
+  background-color : white;
+
+}
+
+.loaderTxt{
+  z-index: 650;
+  position: absolute;
+  padding: 420px 540px;
+  font-family: 'Asap', sans-serif;
+  
+}
+#loaderTxt1{
+  text-align: center;
+  position: absolute;
+  z-index: 650;
+  margin-left:-300px;
+  font-size: 35px;
+}
+#loaderTxt2{
+  margin-top: 100px;
+  text-align: center;
+  position: absolute;
+  z-index: 650;
+  margin-left:-250px;
+
+  font-size: 20px;
+}
+.loaderTxtOff{
+  display: none;
+  font-family: 'Asap', sans-serif;
+  z-index: 650;
+
+}
+.loaderTxtOpOff{
+  font-family: 'Asap', sans-serif;
+  opacity: 0;
+  z-index: 650;
+
+}
