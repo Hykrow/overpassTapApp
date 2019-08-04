@@ -12,10 +12,7 @@ app.use(express.static('public'));
 const {MongoClient} = require('mongodb');
 
 // Passport Config
-require('./config/passport')(passport);
 
-// DB Config
-const db = require('./config/keysUser').mongoURI;
 
 // Connect to Mongo
 mongoose
@@ -73,6 +70,10 @@ const PORT = process.env.PORT || 8080;
 let server = app.listen(PORT, function () {
   console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
+require('./config/passport')(passport);
+
+// DB Config
+const db = require('./config/keysUser').mongoURI;
 const Marker = require('./models/marker');
 
 function makeID(){
