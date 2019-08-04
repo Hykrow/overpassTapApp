@@ -15,14 +15,6 @@ const {MongoClient} = require('mongodb');
 
 
 // Connect to Mongo
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
-
 
 // EJS
 app.use(expressLayouts);
@@ -76,6 +68,14 @@ require('./config/passport')(passport);
 
 // DB Config
 const db = require('./config/keysUser').mongoURI;
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 
 function makeID(){
   return Math.random() *10000*(Math.random() *10000*(Math.random() *10000*(Math.random() *10000)))
