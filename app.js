@@ -12,7 +12,7 @@ app.use(express.static('public'));
 const {MongoClient} = require('mongodb');
 
 // Passport Config
-require('../config/passport.js')(passport);
+require('config/passport')(passport);
 
 // DB Config
 const db = require('../tapAppOverpass/config/keysUser.js').mongoURI;
