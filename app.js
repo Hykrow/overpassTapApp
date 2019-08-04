@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-const Marker = require('./models/Marker');
+const Marker = require('models/Marker');
 
 const app = express();
 const {MongoClient} = require('mongodb');
