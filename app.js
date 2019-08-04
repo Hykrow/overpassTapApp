@@ -11,6 +11,21 @@ app.use(express.static('public'));
 
 const {MongoClient} = require('mongodb');
 
+// Passport Config
+require('../tapAppOverpass/config/passport')(passport);
+
+// DB Config
+const db = require('../tapAppOverpass/config/keysUser').mongoURI;
+
+// Connect to Mongo
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 
 // EJS
 app.use(expressLayouts);
@@ -51,21 +66,6 @@ app.use('/', require('./routes/index.js'));
 
 app.use('/users', require('./routes/users.js'));
 //app.use('/map', require('./routes/users.js'));
-// Passport Config
-require('./config/passport')(passport);
-
-// DB Config
-const db = require('./config/keysUser').mongoURI;
-
-// Connect to Mongo
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
-
 
 const PORT = process.env.PORT || 8080;
 
@@ -73,7 +73,7 @@ const PORT = process.env.PORT || 8080;
 let server = app.listen(PORT, function () {
   console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
-const Marker = require('./models/Marker');
+const Marker = require('../tapAppOverpass/models/Marker');
 
 function makeID(){
   return Math.random() *10000*(Math.random() *10000*(Math.random() *10000*(Math.random() *10000)))
