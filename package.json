@@ -2,9 +2,7 @@
   "name": "node_passport_login",
   "version": "2.0.0",
   "engines": {
-    "node": "10.3.0",
-    "npm": "6.x",
-    "yarn": "1.x"
+    "node": "10.3.0"
   },
   "description": "Node.js authentication with Passport",
   "main": "app.js",
