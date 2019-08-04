@@ -145,8 +145,6 @@ io.on('connection', function(socket){
 
   })
   socket.on('recommandTap', function(d){
-      MongoClient.connect('mongodb://admin:Y2iynSuvZtk7IWx4@cluster0-p4eef.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }).then(client => {
-          const db = client.db('test')
   
       db.collection("markers").find({id: d[0]}).toArray(function(err, result) {
           //console.log(result)
