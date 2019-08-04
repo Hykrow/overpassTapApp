@@ -49,6 +49,7 @@ app.use(function(req, res, next) {
 
 // Routes
 
+const Marker = require('./models/Marker');
 
 app.use('/', require('./routes/index.js'));
 
@@ -60,9 +61,8 @@ const PORT = process.env.PORT || 8080;
 
 //app.listen(PORT, console.log(`Server started on port ${PORT}`));
 let server = app.listen(PORT, function () {
-  //console.log("En écoute sur http://127.0.0.1:"+PORT);
+  console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
-const Marker = require('./models/Marker');
 
 require('./config/passport')(passport);
 
@@ -84,11 +84,14 @@ const io = require('socket.io').listen(server).sockets;
 io.on('connection', function(socket){
 
   socket.on('removeTap', function(d){
+    console.log(d)
     Marker.deleteOne({ _id: d[0]}, function (err) { if(err) console.log(err)});
     setTimeout(function(){tapUpdater()}, 1000)
   })
   socket.on('getTaps', function(d){
 
+      console.log(d)
+      console.log(d[1] +" "+d[0] +' '+d[3]+" "+ d[2])
 
       const OverpassFrontend = require('overpass-frontend')
 
@@ -162,11 +165,19 @@ io.on('connection', function(socket){
       
   })
   socket.on('modifyValue', function(d){
+      console.log('d')
 
+      console.log(d)
+      console.log(d[0])
+      console.log(d[1])
+
+
+      console.log('modifiying')
 
       var markersOne =" "
       //setTimeout(function(){
         Marker.find({id: d[0]}, function(err, res){
+          console.log(res)
           markersOne = res
   
         })
@@ -183,6 +194,7 @@ io.on('connection', function(socket){
       Marker.update({_id: idd}, {
           deleteVotes: parseFloat(r[0].deleteVotes)+1
         }, function(err, affected, resp) {
+         console.log(resp);
         })
       //db.collection("markers").updateOne({id: d[0]}, {$set:{deleteVotes: parseFloat(r[0].deleteVotes)+1, voteDeleters: d[1] +" "+(r[0].voteDeleters)}});
       if (r[0].deleteVotes ==11 && r[0].fiability < 10){
@@ -212,6 +224,7 @@ io.on('connection', function(socket){
 
   })
   socket.on('insertMany', function(d){
+    console.log(d)
 
     const newMarker = new Marker({
       "lat": parseFloat(d[0]),
@@ -225,6 +238,7 @@ io.on('connection', function(socket){
     newMarker
       .save()
       .then(markers =>{ 
+        console.log("inserted")
         tapUpdater()})
     
       
@@ -236,6 +250,7 @@ io.on('connection', function(socket){
   socket.on('findMarkers', function(){
 
     Marker.find({}, function(err, res){
+      console.log(res)
       socket.emit('markersArray', res)
 
     })
@@ -243,6 +258,7 @@ io.on('connection', function(socket){
 
   function tapUpdater(){
       Marker.find({}, function(err, res){
+        console.log(res)
         socket.emit('tapUpdater', res)
 
       })
