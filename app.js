@@ -11,21 +11,6 @@ app.use(express.static('public'));
 
 const {MongoClient} = require('mongodb');
 
-// Passport Config
-require('./config/passport')(passport);
-
-// DB Config
-const db = require('./config/keysUser').mongoURI;
-
-// Connect to Mongo
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
-
 
 // EJS
 app.use(expressLayouts);
@@ -66,6 +51,21 @@ app.use('/', require('./routes/index.js'));
 
 app.use('/users', require('./routes/users.js'));
 //app.use('/map', require('./routes/users.js'));
+// Passport Config
+require('./config/passport')(passport);
+
+// DB Config
+const db = require('./config/keysUser').mongoURI;
+
+// Connect to Mongo
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 
 const PORT = process.env.PORT || 8080;
 
