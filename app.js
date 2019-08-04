@@ -12,10 +12,10 @@ app.use(express.static('public'));
 const {MongoClient} = require('mongodb');
 
 // Passport Config
-require('../tapAppOverpass/config/passport')(passport);
+require('../tapAppOverpass/config/passport.js')(passport);
 
 // DB Config
-const db = require('../tapAppOverpass/config/keysUser').mongoURI;
+const db = require('../tapAppOverpass/config/keysUser.js').mongoURI;
 
 // Connect to Mongo
 mongoose
