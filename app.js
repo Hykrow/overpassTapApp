@@ -73,7 +73,7 @@ const PORT = process.env.PORT || 8080;
 let server = app.listen(PORT, function () {
   console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
-const Marker = require('./config/models/Marker');
+const Marker = require('./models/marker');
 
 function makeID(){
   return Math.random() *10000*(Math.random() *10000*(Math.random() *10000*(Math.random() *10000)))
