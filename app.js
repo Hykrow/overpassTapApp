@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const app = express();
+
 app.use(express.static('public'));
 
-const Marker = require('./models/Marker');
 
-const app = express();
 const {MongoClient} = require('mongodb');
 
 // Passport Config
@@ -73,6 +73,8 @@ const PORT = process.env.PORT || 8080;
 let server = app.listen(PORT, function () {
   console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
+const Marker = require('./models/Marker');
+
 function makeID(){
   return Math.random() *10000*(Math.random() *10000*(Math.random() *10000*(Math.random() *10000)))
 }
