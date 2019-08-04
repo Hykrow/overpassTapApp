@@ -15,7 +15,7 @@ const {MongoClient} = require('mongodb');
 require('./config/passport')(passport);
 
 // DB Config
-const db = require('../tapAppOverpass/config/keysUser.js').mongoURI;
+const db = require('./config/keysUser').mongoURI;
 
 // Connect to Mongo
 mongoose
@@ -73,7 +73,7 @@ const PORT = process.env.PORT || 8080;
 let server = app.listen(PORT, function () {
   console.log("En écoute sur http://127.0.0.1:"+PORT);
 });
-const Marker = require('../tapAppOverpass/models/Marker');
+const Marker = require('./config/models/Marker');
 
 function makeID(){
   return Math.random() *10000*(Math.random() *10000*(Math.random() *10000*(Math.random() *10000)))
